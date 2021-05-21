@@ -2,8 +2,7 @@
 
 ## Hello
 
-Here is my solution of the given requirements, see below *Requirements* section.    
-I DID not implement moving average feature YET - will ad it later today.
+Here is my solution of the given requirements, see below *Requirements* section.
 
 ## What I have simplified / ignored
 

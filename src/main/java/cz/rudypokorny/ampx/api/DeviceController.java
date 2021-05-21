@@ -23,7 +23,8 @@ public class DeviceController {
         return ResponseEntity.ok(deviceService.findDeviceAsDto(deviceId));
     }
 
-    @Operation(summary = "delete all device datapoints", parameters = {@Parameter(name = "deviceId", description = "Device identifier")})
+    @Operation(summary = "delete all device datapoints", parameters = {@Parameter(name = "deviceId",
+            description = "Device identifier", required = true)})
     @DeleteMapping("/{deviceId}/datapoints")
     public ResponseEntity deleteDatapoints(@PathVariable(name = "deviceId") final Long deviceId) {
         deviceService.deleteDatapointsForDevice(deviceId);

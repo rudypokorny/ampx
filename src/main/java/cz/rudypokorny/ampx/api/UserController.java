@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @Operation(summary = "delete all users datapoints",
-            parameters = {@Parameter(name = "userId", description = "User identifier")})
+            parameters = {@Parameter(name = "userId", description = "User identifier", required = true)})
     @DeleteMapping("/{userId}/datapoints")
     public ResponseEntity deleteDatapoints(@PathVariable(name = "userId") final Long userId) {
         userService.deleteDatapointsForUser(userId);

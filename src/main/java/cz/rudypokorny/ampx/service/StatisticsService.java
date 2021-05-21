@@ -22,4 +22,23 @@ public interface StatisticsService {
      */
     List<StatisticsDto> getAveragesForUser(final Long userId);
 
+    /**
+     * return list of moving averages of 15 minutes average buckets. I.E. moving averages of result {@link StatisticsService#getAveragesForUser(Long)}
+     * for given user
+     *
+     * @param userId
+     * @param windowSize
+     * @return resulted statistics
+     */
+    List<StatisticsDto> getMovingAveragesForUser(final Long userId, final Integer windowSize);
+
+    /**
+     * return list of moving averages of 15 minutes average buckets. I.E. moving averages of result {@link StatisticsService#getAveragesForUser(Long)}
+     * for give device
+     *
+     * @param deviceId
+     * @param windowSize
+     * @return resulted statistics
+     */
+    List<StatisticsDto> getMovingAveragesForDevice(final Long deviceId, final Integer windowSize);
 }

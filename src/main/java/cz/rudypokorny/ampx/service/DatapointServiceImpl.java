@@ -9,6 +9,8 @@ import cz.rudypokorny.ampx.exceptions.DatapointNotUniqueException;
 import cz.rudypokorny.ampx.exceptions.DeviceNotFoundException;
 import cz.rudypokorny.ampx.exceptions.UserNotFoundException;
 import cz.rudypokorny.ampx.repository.DatapointRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import static java.lang.String.format;
 
 @Service
 public class DatapointServiceImpl implements DatapointService {
+
+    private static final Logger logger = LoggerFactory.getLogger(DatapointServiceImpl.class);
 
     @Autowired
     private DatapointRepository datapointRepository;
@@ -65,6 +69,7 @@ public class DatapointServiceImpl implements DatapointService {
                 .withValue(value)
                 .withTimestamo(timestamp)
                 .build();
+        //logger.debug("Persisting new datapoint: {}", dataToSave);
         return datapointRepository.save(dataToSave);
     }
 
