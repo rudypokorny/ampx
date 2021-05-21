@@ -2,8 +2,7 @@
 
 ## Hello
 Here is my solution of the given requirements, see below *Requirements* section.    
-I DID not implemented moving average feature, as I don't know how this average works and dont want to implement it wrongly (and frankly I dont have much more time to invest to this homework :-). I believe that by looking at the code for all the other features, you will understand how I write the code and will be able easily implement the missing feature.
-
+I DID not implement moving average feature YET - will ad it later today.
 
 ## What I have simplified / ignored
 * General coding standard
@@ -11,7 +10,8 @@ I DID not implemented moving average feature, as I don't know how this average w
   * I've also ignored most of the javadoc, only added to the most important class, ideally it should be on every public interface.
   * I've failing fast - if the data does not exists or are invalid, I am throwing an exception. This could be solved differently, but in this demo its adequate. I think.
   * Inserted some dummy data to database directly upon application startup (but at least hide it behind dev profile).
-  * I did not spent time on creating Dockerfile, nor docker-compose. No need for that, as everything need for deployment is already bundled inside spring boot fatjar
+  * I did not spend time on creating Dockerfile, nor docker-compose. No need for that, as everything need for deployment
+    is already bundled inside spring boot fatjar
 * Testing
   * In general, I've created just few samples of tests to show you how I am used to writing them, and DID NOT try to cover everything. In real life, I test for edge cases (nulls, invalid values, range values), positive and negative scenario
   * when testing controllers, I defined request jsons in plain string. If there will be more of those tests, I would think of moving them to files for better readability and maintenance (even reusability - sample json request could be used by other tools during automation, not just unit tests)
@@ -41,7 +41,8 @@ I DID not implemented moving average feature, as I don't know how this average w
 
 ## How to run it
 If you have git, and java (11), then simply:
-1. Clone the repo `TODO`
+
+1. Clone the repo `git clone git@github.com:rudypokorny/ampx.git`
 1. `./mvnw install` to build it
 1. `./mvnw spring-boot:run` to run it using your local java installation
 1. Start with dev profile to generate some data, e.i. `./mvnw spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev`

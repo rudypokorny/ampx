@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class StatisticsDto {
 
-    private String name;
-    private Object id;
-    private Date from;
-    private Date  to;
-    private Long count;
-    private Double average;
+    private final String name;
+    private final Object id;
+    private final Date from;
+    private final Date to;
+    private final Long count;
+    private final Double average;
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -93,7 +93,7 @@ public class StatisticsDto {
             return this;
         }
 
-        public Builder wtihFrom(Instant from) {
+        public Builder withFrom(Instant from) {
             this.from = Date.from(from);
             return this;
         }

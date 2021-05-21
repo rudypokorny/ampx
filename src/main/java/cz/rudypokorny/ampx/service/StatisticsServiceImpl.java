@@ -1,6 +1,5 @@
 package cz.rudypokorny.ampx.service;
 
-import cz.rudypokorny.ampx.domain.Device;
 import cz.rudypokorny.ampx.domain.Statistics;
 import cz.rudypokorny.ampx.dto.StatisticsDto;
 import cz.rudypokorny.ampx.exceptions.DeviceNotFoundException;
@@ -17,7 +16,6 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
@@ -78,7 +76,7 @@ public class StatisticsServiceImpl implements StatisticsService {
             statistics.add(StatisticsDto.builder()
                     .withName(entityName)
                     .withId(entityId)
-                    .wtihFrom(from)
+                    .withFrom(from)
                     .withTo(to)
                     .withAverage(stats.getAverage())
                     .withCount(stats.getCount())
