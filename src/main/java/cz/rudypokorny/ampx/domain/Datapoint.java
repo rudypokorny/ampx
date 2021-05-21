@@ -33,40 +33,44 @@ public class Datapoint {
     public Datapoint() {
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Long getId() {
         return id;
-    }
-
-    public Device getDevice() {
-        return device;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public Double getValue() {
-        return value;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public Device getDevice() {
+        return device;
+    }
+
     public void setDevice(Device device) {
         this.device = device;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Double getValue() {
+        return value;
     }
 
     public void setValue(Double value) {
@@ -95,11 +99,6 @@ public class Datapoint {
                 ", timestamp=" + timestamp +
                 ", value='" + value + '\'' +
                 '}';
-    }
-
-
-    public static Builder builder() {
-        return new Builder();
     }
 
     public static class Builder {

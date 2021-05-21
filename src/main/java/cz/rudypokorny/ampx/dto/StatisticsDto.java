@@ -13,10 +13,6 @@ public class StatisticsDto {
     private final Long count;
     private final Double average;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     private StatisticsDto(String entity, Object id, Date from, Date to, Long count, Double average) {
         this.name = entity;
         this.id = id;
@@ -24,6 +20,10 @@ public class StatisticsDto {
         this.to = to;
         this.count = count;
         this.average = average;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getName() {
@@ -79,11 +79,11 @@ public class StatisticsDto {
         private String name;
         private Object id;
         private Date from;
-        private Date  to;
+        private Date to;
         private Long count;
         private Double average;
 
-        public Builder withName(String name){
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
@@ -113,7 +113,7 @@ public class StatisticsDto {
             return this;
         }
 
-        public StatisticsDto build(){
+        public StatisticsDto build() {
             return new StatisticsDto(name, id, from, to, count, average);
         }
     }

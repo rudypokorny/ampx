@@ -19,6 +19,10 @@ public class ErrorDto {
         this.details = details;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getMessage() {
         return message;
     }
@@ -31,10 +35,6 @@ public class ErrorDto {
         return details;
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     public static class Builder {
         private String message;
         private String details;
@@ -44,6 +44,7 @@ public class ErrorDto {
             this.message = message;
             return this;
         }
+
         public Builder withDetails(final String details) {
             this.details = details;
             return this;

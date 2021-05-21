@@ -1,7 +1,6 @@
 package cz.rudypokorny.ampx.service;
 
 import cz.rudypokorny.ampx.domain.Device;
-import cz.rudypokorny.ampx.domain.User;
 import cz.rudypokorny.ampx.dto.DeviceDto;
 
 import java.util.Optional;

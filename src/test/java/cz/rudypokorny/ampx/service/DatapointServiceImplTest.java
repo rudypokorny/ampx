@@ -45,12 +45,12 @@ class DatapointServiceImplTest {
     private DatapointDto DATAPOINT_DTO;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         DATAPOINT_DTO = DatapointDtoCreator.createRandom();
     }
 
     @Test
-    public void givenNulldDatapointDto_thenThrowException(){
+    public void givenNulldDatapointDto_thenThrowException() {
         //bypass common when
         lenient().when(mapper.fromDto(DATAPOINT_DTO)).thenReturn(null);
 

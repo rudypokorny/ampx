@@ -4,10 +4,11 @@ import cz.rudypokorny.ampx.dto.StatisticsDto;
 
 import java.util.List;
 
-public interface StatisticsService{
+public interface StatisticsService {
 
     /**
      * Returns list of 15 minutes averages of time serie from first datapoint to current time. Matching device key"
+     *
      * @param deviceId the device whose devices should be aggregated
      * @return resulted statistics
      */
@@ -15,6 +16,7 @@ public interface StatisticsService{
 
     /**
      * Return list of 15 minutes averages of time serie from first datapoint to current time. Matching user key
+     *
      * @param userId the user whose devices should be aggregated
      * @return resulted statistics
      */

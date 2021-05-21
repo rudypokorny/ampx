@@ -31,6 +31,6 @@ ampx:
     defaultAverageTimeFrame: 15
 
   development:
-      testData:
-        #number of generated device and user entities. Only in
-        count: 5
+    testData:
+      #number of generated device and user entities. Only in
+      count: 5

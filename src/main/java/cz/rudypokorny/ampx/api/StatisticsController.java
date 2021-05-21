@@ -25,14 +25,14 @@ public class StatisticsController {
     @Operation(summary = "return list of 15 minutes averages of time serie from first datapoint to current time. Matching device key",
             parameters = {@Parameter(name = "deviceId", description = "Device identifier")})
     @GetMapping("/devices/{deviceId}/avg")
-    public List<StatisticsDto> getAverageForDevice(@PathVariable(name = "deviceId") final Long deviceId){
+    public List<StatisticsDto> getAverageForDevice(@PathVariable(name = "deviceId") final Long deviceId) {
         return statisticsService.getAveragesForDevice(deviceId);
     }
 
     @Operation(summary = "return list of 15 minutes averages of time serie from first datapoint to current time. Matching user key",
             parameters = {@Parameter(name = "userId", description = "User identifier")})
     @GetMapping("/users/{userId}/avg")
-    public List<StatisticsDto> getAverageForUser(@PathVariable(name = "userId") final Long userId){
+    public List<StatisticsDto> getAverageForUser(@PathVariable(name = "userId") final Long userId) {
         return statisticsService.getAveragesForUser(userId);
     }
 }

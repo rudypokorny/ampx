@@ -30,10 +30,10 @@ public class DatapointMapperImpl implements DatapointMapper {
 
         var dto = new DatapointDto();
         dto.setTimestamp(datapoint.getTimestamp());
-        if(datapoint.getDevice() != null){
+        if (datapoint.getDevice() != null) {
             dto.setDevice(datapoint.getDevice().getId());
         }
-        if(datapoint.getUser() != null){
+        if (datapoint.getUser() != null) {
             dto.setUser(datapoint.getUser().getId());
         }
         dto.setValue(datapoint.getValue());

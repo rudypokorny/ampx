@@ -13,7 +13,7 @@ public interface DatapointService {
      * @param datapoint to be saved
      * @return saved datapoint
      * @throws DatapointNotUniqueException in case when datapoint for given time, user and device is alredy persisted
-     * @throws NullPointerException                                       if the given object is null
+     * @throws NullPointerException        if the given object is null
      */
     DatapointDto createDatapointFromDto(final DatapointDto datapoint);
 }

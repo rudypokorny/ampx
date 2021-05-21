@@ -19,13 +19,13 @@ public class DeviceController {
     private DeviceService deviceService;
 
     @GetMapping("/{deviceId}")
-    public ResponseEntity<DeviceDto> findDevice(@PathVariable(name = "deviceId") final Long deviceId){
+    public ResponseEntity<DeviceDto> findDevice(@PathVariable(name = "deviceId") final Long deviceId) {
         return ResponseEntity.ok(deviceService.findDeviceAsDto(deviceId));
     }
 
     @Operation(summary = "delete all device datapoints", parameters = {@Parameter(name = "deviceId", description = "Device identifier")})
     @DeleteMapping("/{deviceId}/datapoints")
-    public ResponseEntity deleteDatapoints(@PathVariable(name = "deviceId") final Long deviceId){
+    public ResponseEntity deleteDatapoints(@PathVariable(name = "deviceId") final Long deviceId) {
         deviceService.deleteDatapointsForDevice(deviceId);
         return ResponseEntity.noContent().build();
     }

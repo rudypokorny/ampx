@@ -20,7 +20,7 @@ public class UserCreator {
         return createWithId(new Random().nextLong());
     }
 
-    public static User createWithId(final Long id){
+    public static User createWithId(final Long id) {
         var user = new User();
         user.setDatapoints(new ArrayList<>());
         user.setId(id);

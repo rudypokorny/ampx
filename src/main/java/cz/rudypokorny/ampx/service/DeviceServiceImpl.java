@@ -51,7 +51,7 @@ public class DeviceServiceImpl implements DeviceService {
                 .orElseThrow(() -> new DeviceNotFoundException(deviceId));
     }
 
-    private Integer deleteDatapoints(final Device device){
+    private Integer deleteDatapoints(final Device device) {
         var count = device.getDatapoints().size();
         datapointRepository.deleteByDevice(device);
         logger.debug("Deleted all datapoints ({}) for device {}", count, device.getId());

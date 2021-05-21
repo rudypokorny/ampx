@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 /**
  * marker interface for having common ancestor to better manage exception handling
  */
-public abstract class AbstractInvalidInputException extends RuntimeException{
+public abstract class AbstractInvalidInputException extends RuntimeException {
 
     public static final String NOT_FOUND_MESSAGE_TEMPLATE = "%s with id %s has not been found";
     private HttpStatus status;

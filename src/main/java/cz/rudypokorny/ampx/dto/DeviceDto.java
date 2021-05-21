@@ -1,6 +1,5 @@
 package cz.rudypokorny.ampx.dto;
 
-import java.util.List;
 import java.util.Objects;
 
 public class DeviceDto {

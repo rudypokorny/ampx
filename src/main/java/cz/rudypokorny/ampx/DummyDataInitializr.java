@@ -20,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.UUID;
 
 /**
  * Development utility to generate 100 users and Devices. Sequences are starting at 1, so first user/device  will be having id 0, last 100.
@@ -30,28 +29,20 @@ import java.util.UUID;
 public class DummyDataInitializr implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(DummyDataInitializr.class);
-
+    private static final int DATAPOINT_MULTIPLIER = 10;
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private DeviceRepository deviceRepository;
-
     @Autowired
     private DatapointRepository datapointRepository;
-
     @Autowired
     private DatapointMapper datapointMapper;
-
     @Value("${ampx.development.testData.count:0}")
     private int dummyDataCount;
-
     @Value("${server.port}")
     private int serverPort;
-
     private RestTemplate restTemplate = new RestTemplate();
-
-    private static final int DATAPOINT_MULTIPLIER = 10;
 
     @Override
     public void run(String... args) {

@@ -3,24 +3,23 @@ package cz.rudypokorny.ampx.domain;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(generator = "seq_user", strategy = GenerationType.SEQUENCE)
-    private  Long id;
+    private Long id;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
     private List<Datapoint> datapoints;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public List<Datapoint> getDatapoints() {

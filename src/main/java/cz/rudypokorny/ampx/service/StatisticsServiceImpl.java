@@ -62,7 +62,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     private List<StatisticsDto> computeStatistics(String entityName, Long entityId, Date minDate, Function<DateRange, Statistics> statisticsFunction) {
         //min date null = no data for that entity at all
-        if(minDate == null){
+        if (minDate == null) {
             return Collections.emptyList();
         }
         Instant to, from = Instant.now();

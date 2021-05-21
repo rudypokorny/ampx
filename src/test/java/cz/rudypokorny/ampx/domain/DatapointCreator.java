@@ -2,7 +2,6 @@ package cz.rudypokorny.ampx.domain;
 
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * Test util class that helps to create dummy test object

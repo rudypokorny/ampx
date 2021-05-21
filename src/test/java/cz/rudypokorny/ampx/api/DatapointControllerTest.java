@@ -35,12 +35,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class DatapointControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
-
-    @MockBean
-    private DatapointService datapointService;
-
     private static final String MISSING_TIMESTAMP = "{\"user\": \"1\", \"device\": \"2\", \"value\": \"1\"}";
     private static final String MISSING_DEVICE = "{\"user\": \"1\", \"timestamp\": \"2021-05-19T12:34:12\", \"value\": \"1\"}";
     private static final String MISSING_USER = "{\"device\": \"2\", \"timestamp\": \"2021-05-19T12:34:12\", \"value\": \"1\"}";
@@ -48,11 +42,32 @@ class DatapointControllerTest {
     private static final String NULL_VALUE = "{\"user\": \"1\", \"device\": \"2\", \"timestamp\": \"2021-05-19T12:34:12\"}, \"value\":null }";
     private static final String COMPLETE_BODY = "{\"user\": \"1\", \"device\": \"2\", \"timestamp\": \"2021-05-19T12:34:12\", \"value\": \"1\"}";
     private static final String NO_ATTRIBUTES = "{}";
-
     private static final String TIMESTAMP_MALFORMED = "{\"user\": \"1\", \"device\": \"2\", \"timestamp\": \"2021-05-T12:34:12\", \"value\": \"1\"}";
     private static final String USER_ID_STRING = "{\"user\": \"x\", \"device\": \"2\", \"timestamp\": \"2021-05-19T12:34:12\", \"value\": \"1\"}";
     private static final String DEVICE_ID_DECIMAL = "{\"user\": \"1\", \"device\": \"1.1\", \"timestamp\": \"2021-05-19T12:34:12\", \"value\": \"1\"}";
+    @Autowired
+    private MockMvc mvc;
+    @MockBean
+    private DatapointService datapointService;
 
+    private static Stream<Arguments> invalidDatapointRequestsProvider() {
+        return Stream.of(
+                Arguments.of(NO_ATTRIBUTES, "timestamp", "must not be null"),
+                Arguments.of(MISSING_DEVICE, "device", "must not be null"),
+                Arguments.of(MISSING_TIMESTAMP, "timestamp", "must not be null"),
+                Arguments.of(MISSING_USER, "user", "must not be null"),
+                Arguments.of(NULL_VALUE, "value", "must not be null"),
+                Arguments.of(MISSING_VALUE, "value", "must not be null")
+        );
+    }
+
+    private static Stream<Arguments> mallformedDatapointRequestsProvider() {
+        return Stream.of(
+                Arguments.of(TIMESTAMP_MALFORMED),
+                Arguments.of(DEVICE_ID_DECIMAL),
+                Arguments.of(USER_ID_STRING)
+        );
+    }
 
     @ParameterizedTest
     @MethodSource("invalidDatapointRequestsProvider")
@@ -91,24 +106,5 @@ class DatapointControllerTest {
                 .andDo(print())
                 .andExpect(status().isAccepted())
                 .andExpect(jsonPath("$.id", is(expectedDatapoint.getId())));
-    }
-
-    private static Stream<Arguments> invalidDatapointRequestsProvider() {
-        return Stream.of(
-                Arguments.of(NO_ATTRIBUTES, "timestamp", "must not be null"),
-                Arguments.of(MISSING_DEVICE, "device", "must not be null"),
-                Arguments.of(MISSING_TIMESTAMP, "timestamp", "must not be null"),
-                Arguments.of(MISSING_USER, "user", "must not be null"),
-                Arguments.of(NULL_VALUE, "value", "must not be null"),
-                Arguments.of(MISSING_VALUE, "value", "must not be null")
-        );
-    }
-
-    private static Stream<Arguments> mallformedDatapointRequestsProvider() {
-        return Stream.of(
-                Arguments.of(TIMESTAMP_MALFORMED),
-                Arguments.of(DEVICE_ID_DECIMAL),
-                Arguments.of(USER_ID_STRING)
-        );
     }
 }

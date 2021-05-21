@@ -52,6 +52,7 @@ public interface DatapointRepository extends CrudRepository<Datapoint, Long> {
 
     /**
      * Searches for the oldest time for given device
+     *
      * @param device
      * @return
      */
@@ -71,6 +72,7 @@ public interface DatapointRepository extends CrudRepository<Datapoint, Long> {
 
     /**
      * Searches for the oldest time for given user
+     *
      * @param user
      * @return
      */

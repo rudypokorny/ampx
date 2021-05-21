@@ -11,11 +11,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.validation.constraints.Null;
-
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -30,19 +29,19 @@ class UserServiceImplTest {
     private UserRepository userRepository;
 
     @Test
-    public void givenNullAsId_whenDeleteDatapointsForUser_thenThrowsNPE(){
-        assertThrows(NullPointerException.class, () ->userService.deleteDatapointsForUser(null));
+    public void givenNullAsId_whenDeleteDatapointsForUser_thenThrowsNPE() {
+        assertThrows(NullPointerException.class, () -> userService.deleteDatapointsForUser(null));
     }
 
     @Test
-    public void givenNonexistentId_whenDeleteDatapointsForUser_thenThrowsNotFoundException(){
+    public void givenNonexistentId_whenDeleteDatapointsForUser_thenThrowsNotFoundException() {
         Mockito.when(userRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
 
-        assertThrows(UserNotFoundException.class, () ->userService.deleteDatapointsForUser(0L), "Device with id 0 has not been found.");
+        assertThrows(UserNotFoundException.class, () -> userService.deleteDatapointsForUser(0L), "Device with id 0 has not been found.");
     }
 
     @Test
-    public void givenExistingId_whenDeleteDatapointsForUser_thenReturnExpectedCount(){
+    public void givenExistingId_whenDeleteDatapointsForUser_thenReturnExpectedCount() {
         int expectedCount = 3;
         var user = UserCreator.createRandom(expectedCount);
         Mockito.when(userRepository.findById(Mockito.eq(user.getId()))).thenReturn(Optional.of(user));

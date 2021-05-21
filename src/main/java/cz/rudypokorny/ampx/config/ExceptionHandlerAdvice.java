@@ -37,8 +37,8 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(e.getStatus())
                 .body(ErrorDto.builder()
-                .withMessage(e.getMessage())
-                .build());
+                        .withMessage(e.getMessage())
+                        .build());
     }
 
     @Override
